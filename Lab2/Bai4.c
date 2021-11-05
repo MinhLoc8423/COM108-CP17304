@@ -11,6 +11,6 @@ int main()
     printf("Nhap diem hoa: ");
     scanf("%f", &hoa);
     diem_trung_binh = (hoa + (ly*2) + (toan*3)) /3;
-    printf("Diem trung binh cua 3 mon: %f \n", diem_trung_binh);
+    printf("Diem trung binh cua 3 mon: %.2f \n", diem_trung_binh);
     return 0;
 }
