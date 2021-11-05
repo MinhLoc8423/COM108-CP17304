@@ -9,7 +9,7 @@ int main()
     scanf("%f", &ban_kinh);  
     chu_vi = 2*ban_kinh*PI; 
     dien_tich = ban_kinh*ban_kinh*PI; 
-    printf("Chu vi hinh tron: %f \n", chu_vi);
-    printf("Dien tich hinh tron: %f \n", dien_tich);
+    printf("Chu vi hinh tron: %.2f \n", chu_vi);
+    printf("Dien tich hinh tron: %.2f \n", dien_tich);
     return 0;
 }
