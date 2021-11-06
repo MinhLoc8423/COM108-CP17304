@@ -9,6 +9,7 @@ int main()
     printf("*       1: Chuong trinh tinh hoc luc           *\n");
     printf("*       2: Chuong trinh giai phuong trinh      *\n");
     printf("*       3: Chuong trinh tinh tien dien         *\n");
+    printf("*       4: Thoat chuong trinh                  *\n");
     printf("************************************************\n");
     printf("Lua chon chuong trinh: ");
     lua_chon = getchar();
@@ -18,7 +19,7 @@ int main()
     case '1':{
         int diem;
         printf("\n");
-        printf("******** Chuong trinh tinh diem hoc luc ******** \n");
+        printf("======== Chuong trinh tinh diem hoc luc ========= \n");
         printf("\n");
         printf("Nhap diem cua sinh vien(0-10): ");
         scanf("%d", &diem);
@@ -120,7 +121,6 @@ int main()
                     {
                         printf("Phuong trinh co hai nghiem phan biet: x1 = %.2f \n", (-b + sqrt(delta))/(2*a ));
                         printf("Phuong trinh co hai nghiem phan biet: x2 = %.2f \n", (-b - sqrt(delta))/(2*a ));
-                        // printf("Can bac hai cua %.2f \n", delta );
                     }
                     
                 }
@@ -137,7 +137,40 @@ int main()
             break;
         }
     case '3':{
-        printf("3: Chuong trinh tinh tien dien \n");
+        float so_dien;
+        printf("\n");
+        printf("*=========Chuong trinh tinh tien dien==========*\n");
+        printf("Nhap so dien tieu thu hang thang: ");
+        scanf("%f", &so_dien);
+        if (so_dien >= 401)
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*2.927);
+        }
+        else if (so_dien >= 301)
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*2.834);
+        }
+        else if (so_dien >= 201)
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*2.536);
+        }
+        else if (so_dien >= 101)
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*2.014);
+        }
+        else if (so_dien >= 51)
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*1.734);
+        }
+        else
+        {
+            printf("So tien can phai dong: %.3f \n", so_dien*1.678);
+        }
+        break;
+    }   
+    case '4':{
+        printf("\n");
+        printf("*=====================Exit=====================*\n");
         break;
     }   
     default:
