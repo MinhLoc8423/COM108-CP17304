@@ -17,6 +17,7 @@ int main()
 {
     int input_num_1,input_num_2,input_num_3;
     int result;
+    printf("Chuong trinh tim gia tri lon nhat trong 3 so\n");
     printf("Nhap so thu nhat: ");
     scanf("%d",&input_num_1);
     printf("Nhap so thu hai: ");
