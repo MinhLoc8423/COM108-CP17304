@@ -142,29 +142,29 @@ int main()
         printf("*=========Chuong trinh tinh tien dien==========*\n");
         printf("Nhap so dien tieu thu hang thang: ");
         scanf("%f", &so_dien);
-        if (so_dien >= 401)
+        if (so_dien <= 50)
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*2.927);
+            printf("So tien can phai dong: %.3f \n", so_dien*1.678);
         }
-        else if (so_dien >= 301)
+        else if (so_dien <= 100)
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*2.834);
+            printf("So tien can phai dong: %.3f \n", 50*1.678 + (so_dien-50)*1.734 );
         }
-        else if (so_dien >= 201)
+        else if (so_dien <= 200)
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*2.536);
+            printf("So tien can phai dong: %.3f \n", 50*1.678 + 50*1.734 + (so_dien-100)*2.014);
         }
-        else if (so_dien >= 101)
+        else if (so_dien <= 300)
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*2.014);
+            printf("So tien can phai dong: %.3f \n", 50*1.678 + 50*1.734 + 100*2.014 + (so_dien-200)*2.536);
         }
-        else if (so_dien >= 51)
+        else if (so_dien <= 400)
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*1.734);
+            printf("So tien can phai dong: %.3f \n",50*1.678 + 50*1.734 + 100*2.014 + 100*2.636 + (so_dien-300)*2.834);
         }
         else
         {
-            printf("So tien can phai dong: %.3f \n", so_dien*1.678);
+            printf("So tien can phai dong: %.3f \n",50*1.678 + 50*1.734 + 100*2.014 + 100*2.636 + 100*2.834 + (so_dien-400)*2.927);
         }
         break;
     }   
