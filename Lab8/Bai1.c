@@ -30,15 +30,7 @@ void input_sv(struct sinh_vien mang_sv[],int n){
 
 void output_sv(struct sinh_vien mang_sv[],int n){
     for(int i=0;i<n;i++){
-        printf("Ma Sinh Vien:");
-        printf("%s\t|",mang_sv[i].ma_sv);
-        printf("Ten Sinh Vien:");
-        printf("%s\t|",mang_sv[i].ten_sv);
-        printf("Nganh Hoc:");
-        printf("%s\t|",mang_sv[i].nganh_hoc);
-        printf("Diem Trung Binh:");
-        printf("%.2f",mang_sv[i].diem_tb);
-        printf("\n");
+        printf("%-16s | %-30s | %-20s | %.2f \n",mang_sv[i].ma_sv,mang_sv[i].ten_sv,mang_sv[i].nganh_hoc,mang_sv[i].diem_tb);
     }
 }
 
@@ -49,6 +41,7 @@ int main()
     struct sinh_vien mang_sv[bien_dem];
     input_sv(mang_sv,bien_dem);
     printf("\nBang sinh vien\n");
+    printf("%-16s | %-30s | %-20s | %s \n","MaSV","TenSV","Nganh Hoc","Diem Trung Binh");
     output_sv(mang_sv,bien_dem);
     return 0;
 }
