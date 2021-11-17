@@ -49,10 +49,10 @@ void sort_diem(struct sinh_vien mang_sv[],int n){
         {
             if (mang_sv[i].diem_tb>mang_sv[j].diem_tb)
             {
-                float temp;
-                temp = mang_sv[i].diem_tb;
-                mang_sv[i].diem_tb = mang_sv[j].diem_tb;
-                mang_sv[j].diem_tb = temp;
+                struct sinh_vien temp;
+                temp = mang_sv[i];
+                mang_sv[i] = mang_sv[j];
+                mang_sv[j] = temp;
             }
             
         }
