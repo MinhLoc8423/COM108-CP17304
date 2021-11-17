@@ -8,29 +8,48 @@ struct sinh_vien{
     float diem_tb;
 };
 
-void input_sv(struct sinh_vien *mang_sv){
-    printf("Ma so sinh vien:");
-    gets((*mang_sv).ma_sv);
-    printf("Ten sinh vien:");
-    gets((*mang_sv).ten_sv);
-    printf("Nganh hoc:");
-    gets((*mang_sv).nganh_hoc);
-    printf("Diem trung binh:");
-    scanf("%f",& (*mang_sv).diem_tb);
+int number_of_student(int *n){
+    printf("Nhap so luong sinh vien can them:");
+    scanf("%d",&(*n));
 }
 
-void output_sv(struct sinh_vien mang_sv){
-    printf("%s |",mang_sv.ma_sv);
-    printf(" %s |",mang_sv.ten_sv);
-    printf(" %s |",mang_sv.nganh_hoc);
-    printf(" %.2f",mang_sv.diem_tb);
+void input_sv(struct sinh_vien mang_sv[],int n){
+    for(int i=0;i<n;i++){
+        printf("***Sinh vien so %d***\n",i);
+        printf("Ma so sinh vien:");
+        while (getchar() != '\n');
+        gets((mang_sv[i]).ma_sv);
+        printf("Ten sinh vien:");
+        gets((mang_sv[i]).ten_sv);
+        printf("Nganh hoc:");
+        gets((mang_sv[i]).nganh_hoc);
+        printf("Diem trung binh:");
+        scanf("%f",& (mang_sv[i]).diem_tb);
+    }
+}
+
+void output_sv(struct sinh_vien mang_sv[],int n){
+    for(int i=0;i<n;i++){
+        printf("Ma Sinh Vien:");
+        printf("%s\t|",mang_sv[i].ma_sv);
+        printf("Ten Sinh Vien:");
+        printf("%s\t|",mang_sv[i].ten_sv);
+        printf("Nganh Hoc:");
+        printf("%s\t|",mang_sv[i].nganh_hoc);
+        printf("Diem Trung Binh:");
+        printf("%.2f",mang_sv[i].diem_tb);
+        printf("\n");
+    }
 }
 
 int main()
 {   
-    struct sinh_vien mang_sv;
-    input_sv(&mang_sv);
-    output_sv(mang_sv);
+    int bien_dem=0;
+    number_of_student(&bien_dem);
+    struct sinh_vien mang_sv[bien_dem];
+    input_sv(mang_sv,bien_dem);
+    printf("\nBang sinh vien\n");
+    output_sv(mang_sv,bien_dem);
     return 0;
 }
 
