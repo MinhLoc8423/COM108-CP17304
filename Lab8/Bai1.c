@@ -41,7 +41,7 @@ int main()
     struct sinh_vien mang_sv[bien_dem];
     input_sv(mang_sv,bien_dem);
     printf("\nBang sinh vien\n");
-    printf("%-16s | %-30s | %-20s | %s \n","MaSV","TenSV","Nganh Hoc","Diem Trung Binh");
+    printf("%-16s | %-30s | %-20s | %s \n","MaSV","TenSV","Nganh Hoc","Diem TB");
     output_sv(mang_sv,bien_dem);
     return 0;
 }
