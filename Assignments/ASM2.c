@@ -84,7 +84,36 @@ void program_2(){
 }
 
 void program_3(){
-
+    int gio_batdau,gio_ketthuc,tong_gio;
+    float tien;
+    printf("\nChuong trinh so 3: Chuong trinh tinh tien cho quan karaoke\n");
+    printf("Nhap gio bat dau(24h):");
+    scanf("%d",&gio_batdau);
+    printf("Nhap gio ket thuc(24h):");
+    scanf("%d",&gio_ketthuc);
+    tong_gio = gio_ketthuc - gio_batdau;
+    if((gio_ketthuc < gio_batdau) || ((12 > gio_batdau) || (gio_ketthuc > 23)) ){        
+        printf("Loi gio nhap !!!\n");
+    }
+    else{
+        if (tong_gio > 3)
+        {
+            float tien_km = 0.7;
+            if( 14 <= gio_batdau && gio_batdau <= 17){
+                tien_km = 0.6;
+                tien = (tong_gio * 150000)*tien_km;
+                printf("So tien can thanh toan la:%g\n",tien);
+            }
+            else{
+                tien = (tong_gio * 150000)*tien_km;
+                printf("So tien can thanh toan la:%g\n",tien);
+            }
+        }
+        else{
+            tien = (tong_gio * 150000);
+            printf("So tien can thanh toan la:%g\n",tien);
+        }
+    }
 }
 
 void lua_chon(){
@@ -108,6 +137,7 @@ void lua_chon(){
         }
         case 3:{
             program_3();
+            printf("\n");
             break;
         }
         case 4:{
