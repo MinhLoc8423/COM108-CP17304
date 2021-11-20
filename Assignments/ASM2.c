@@ -7,7 +7,7 @@ void menu(){
     printf("*         02: Tim uoc chung va boi chung cua 2 so        *\n");
     printf("*         03: Chuong trinh tinh tien cho quan karaoke    *\n");
     printf("*         04: Chuong trinh tinh tien dien                *\n");
-    printf("*         05: Chuong trinh tinh doi tien                 *\n");
+    printf("*         05: Chuong trinh doi tien                      *\n");
     printf("*         06: Tinh lai xuat vay ngan hang vay tra gop    *\n");
     printf("*         07: Chuong trinh vay tien mua xe               *\n");
     printf("*         08: Sap xep thong tin sinh vien                *\n");
@@ -96,22 +96,80 @@ void program_3(){
         printf("Loi gio nhap !!!\n");
     }
     else{
+        tien = tong_gio * 150000;
         if (tong_gio > 3)
         {
             float tien_km = 0.7;
             if( 14 <= gio_batdau && gio_batdau <= 17){
                 tien_km = 0.6;
-                tien = (tong_gio * 150000)*tien_km;
+                tien = tien + (((tong_gio - 3) * 150000)*tien_km);
                 printf("So tien can thanh toan la:%g\n",tien);
             }
             else{
-                tien = (tong_gio * 150000)*tien_km;
+                tien = tien + (((tong_gio - 3) * 150000)*tien_km);
                 printf("So tien can thanh toan la:%g\n",tien);
             }
         }
         else{
-            tien = (tong_gio * 150000);
             printf("So tien can thanh toan la:%g\n",tien);
+        }
+    }
+}
+
+void program_4(){
+    float bac1,bac2,bac3,bac4,bac5,bac6,so_tien_dien;
+    bac1 = 1.678;
+    bac2 = 1.734;
+    bac3 = 2.014;
+    bac4 = 2.536;
+    bac5 = 2.834;
+    bac6 = 2.927;
+    printf("\nChuong trinh so 4: Tinh tien dien\n");
+    printf("Nhap so (kwh) dien su dung:");
+    scanf("%f",&so_tien_dien);
+    if(so_tien_dien <= 50){
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1);
+    }else if (so_tien_dien <= 100){
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1 + (so_tien_dien-50)*bac2);
+    }else if (so_tien_dien <= 200){
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1 + so_tien_dien*bac2 + (so_tien_dien-100)*bac3);
+    }else if (so_tien_dien <= 300){
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1 + so_tien_dien*bac2 + so_tien_dien*bac3 + (so_tien_dien-200)*bac4 );
+    }else if (so_tien_dien <= 400){
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1 + so_tien_dien*bac2 + so_tien_dien*bac3 + so_tien_dien*bac4 + (so_tien_dien-300)*bac5 );
+    }else{
+        printf("So tien phai tra la:%g\n",so_tien_dien*bac1 + so_tien_dien*bac2 + so_tien_dien*bac3 + so_tien_dien*bac4 + so_tien_dien*bac5 + (so_tien_dien-400)*bac6 );
+    }
+}
+
+void program_5(){
+    int menh_gia_tien[9] = {500,200,100,50,20,10,5,2,1};
+    int arr[9]= {0};
+    int input;
+    printf("\nChuong trinh so 5: Chuc nang doi tien\n");
+    printf("Nhap so tien can doi:");
+    scanf("%d",&input);
+    int i = 0;
+    int so_tien = input;
+    for (int j = 0; j < 9; j++){
+        if (so_tien == menh_gia_tien[j])
+        {
+            i = j+1;
+        }  
+    }
+    while (input != 0)
+    {   
+        while (input < menh_gia_tien[i])
+        {
+            i++;
+        }
+        input = input - menh_gia_tien[i];
+        arr[i] += 1;
+    }
+    for ( i = 0; i < 9; i++)
+    {
+        if(arr[i] > 0){
+            printf("%d to menh gia %d\n",arr[i],menh_gia_tien[i]);
         }
     }
 }
@@ -141,11 +199,13 @@ void lua_chon(){
             break;
         }
         case 4:{
-            printf("Ban da chon bai 4\n");
+            program_4();
+            printf("\n");
             break;
         }
         case 5:{
-            printf("Ban da chon bai 5\n");
+            program_5();
+            printf("\n");
             break;
         }
         case 6:{
