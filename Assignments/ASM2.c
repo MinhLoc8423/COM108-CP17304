@@ -1,5 +1,12 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
+#include <stdlib.h>
+
+struct sinh_vien{
+    char ten_sv[20];
+    float diem_tb;
+};
 
 void menu(){
     printf("* =========================MENU========================= *\n");
@@ -177,16 +184,16 @@ void program_5(){
 }
 
 void program_6(){
-    int so_tien_vay,lai;
+    float so_tien_vay,lai;
     printf("\nChuong trinh so 6: Chuc nang tinh lai xuat cho vay tra gop\n");
     printf("Nhap so tien muon vay:");
-    scanf("%d",&so_tien_vay);
-    int bien_tam = so_tien_vay;
+    scanf("%f",&so_tien_vay);
+    float bien_tam = so_tien_vay;
     printf("%s| %-15s | %-15s | %-15s | %-15s\n","Ky han","Lai phai tra","Goc phai tra","So tien phai tra","So tien con lai");
     for(int i = 1;i<=12;i++){
         lai = so_tien_vay * 0.05;
         so_tien_vay = so_tien_vay - (bien_tam/12);
-        printf("  %-3d | %-15d | %-15d | %-16d | %-15d\n",i,lai,(bien_tam/12),(bien_tam/12)+lai,so_tien_vay);
+        printf("  %-3d | %-15.2f | %-15.2f | %-16.2f | %-15.2f\n",i,lai,(bien_tam/12),(bien_tam/12)+lai,so_tien_vay);
     }
 }
 
@@ -210,6 +217,154 @@ void program_7(){
             printf("---------------------------->Ket thuc nam thu %d<----------------------------\n",j);
         }
     }
+}
+
+void program_8(){
+    int input;
+    printf("\nChuong trinh so 8: Sap xep thong tin sinh vien\n");
+    printf("Nhap so luong sinh vien can them:");
+    scanf("%d",&input);
+    struct sinh_vien mang_sv[input];
+    for(int i=0;i<input;i++){
+        printf("***Sinh vien so %d***\n",i);
+        while (getchar() != '\n');
+        printf("Ten sinh vien:");
+        gets((mang_sv[i]).ten_sv);
+        printf("Diem trung binh:");
+        scanf("%f",& (mang_sv[i]).diem_tb);
+    }
+    printf("----------------->So luong va thong tin sinh da them<----------------\n");
+    printf("%-25s | %-20s | %s \n","Ten sinh vien","Hoc luc","Diem sinh vien");
+    for(int i=0;i<input;i++){
+        char hoc_luc[20];
+        if(mang_sv[i].diem_tb >= 9){
+            strcpy(hoc_luc,"Hoc luc xuat sac");
+        }
+        else if(mang_sv[i].diem_tb >= 8){
+            strcpy(hoc_luc,"Hoc luc gioi");
+        }
+        else if(mang_sv[i].diem_tb >= 6.5){
+            strcpy(hoc_luc,"Hoc luc kha");
+        }
+        else if(mang_sv[i].diem_tb >= 5){
+            strcpy(hoc_luc,"Hoc luc trung binh");
+        }
+        else
+        {
+            strcpy(hoc_luc,"Hoc luc yeu");
+        }
+        printf("%-25s | %-20s | %.2f\n",mang_sv[i].ten_sv,hoc_luc,mang_sv[i].diem_tb);
+    }
+    printf("--------------->Sap xep sinh vien theo thu tu giam dan<--------------\n");
+    for(int i=0;i<input-1;i++){
+        for (int j = i+1; j < input; j++)
+        {
+            if (mang_sv[i].diem_tb<mang_sv[j].diem_tb)
+            {
+                struct sinh_vien temp;
+                temp = mang_sv[i];
+                mang_sv[i] = mang_sv[j];
+                mang_sv[j] = temp;
+            }
+            
+        }
+    }
+    printf("%-25s | %-20s | %s \n","Ten sinh vien","Hoc luc","Diem sinh vien");
+    for(int i=0;i<input;i++){
+        char hoc_luc[20];
+        if(mang_sv[i].diem_tb >= 9){
+            strcpy(hoc_luc,"Hoc luc xuat sac");
+        }
+        else if(mang_sv[i].diem_tb >= 8){
+            strcpy(hoc_luc,"Hoc luc gioi");
+        }
+        else if(mang_sv[i].diem_tb >= 6.5){
+            strcpy(hoc_luc,"Hoc luc kha");
+        }
+        else if(mang_sv[i].diem_tb >= 5){
+            strcpy(hoc_luc,"Hoc luc trung binh");
+        }
+        else
+        {
+            strcpy(hoc_luc,"Hoc luc yeu");
+        }
+        printf("%-25s | %-20s | %.2f\n",mang_sv[i].ten_sv,hoc_luc,mang_sv[i].diem_tb);
+    }
+}
+
+void program_9(){
+    int input;
+    printf("\nChuong trinh so 9: Game FPOLY-LOTT\n");
+    printf("Nhap so(1-15):");
+    scanf("%d",&input);
+    if (input < 1 || input > 15)
+    {
+        printf("!!! Loi so da nhap !!!\n");
+    }
+    else
+    {
+        int so_may_man = 1 + rand()%(15+1-1);
+        char so_sanh1[3];
+        char so_sanh2[3];
+        sprintf(so_sanh1, "%d\n", input);
+        sprintf(so_sanh2, "%d\n", so_may_man);
+        printf("$$$ Con so may man la:%d $$$\n",so_may_man);
+        for (int i = 0; i < 3; i++)
+        {
+            if (so_sanh1[i] == so_sanh2[i] && so_sanh1[i+1] == so_sanh2[i+1])
+            {
+                printf("Chuc mung ban trung giai nhat\n");
+                break;
+            }
+            else if((so_sanh1[i] == so_sanh2[i]) || (so_sanh1[i] == so_sanh2[i+1]) )
+            {
+                printf("Chuc mung ban trung giai nhi\n");
+                break;
+            }
+            else
+            {
+                printf("Chuc mung ban may man lan sau \n");
+                break;
+            }
+        }
+    }
+}
+
+void program_10(){
+    int tu_so1,tu_so2,mau_so1,mau_so2;
+    
+    do
+    {
+        printf("\nChuong trinh so 10: Tinh toan phan so\n");
+        printf("Nhap tu so thu nhat:");
+        scanf("%d",&tu_so1);
+        printf("Nhap mau so thu nhat:");
+        scanf("%d",&mau_so1);
+        printf("Nhap tu so thu hai:");
+        scanf("%d",&tu_so2);
+        printf("Nhap mau so thu hai:");
+        scanf("%d",&mau_so2);
+        if (mau_so1 == 0 || mau_so2 == 0)
+        {
+            printf("!!! Mau so phai khac khong !!!\n");
+        }
+        else
+        {
+            if( mau_so2 == mau_so1){
+                printf("Tong cua 2 phan so la:%d/%d\n",tu_so1+tu_so2,mau_so1);
+                printf("Hieu cua 2 phan so la:%d/%d\n",tu_so1-tu_so2,mau_so1);
+            }
+            else
+            {
+                int mau_chung = mau_so1*mau_so2;
+                printf("Tong cua 2 phan so la:%d/%d\n",(tu_so1*mau_so2)+(tu_so2*mau_so1),mau_chung);
+                printf("Hieu cua 2 phan so la:%d/%d\n",(tu_so1*mau_so2)-(tu_so2*mau_so1),mau_chung);
+            }
+            printf("Tich cua 2 phan so la:%d/%d\n",tu_so2*tu_so1,mau_so1*mau_so2);
+            printf("Thuong cua 2 phan so la:%d/%d\n",tu_so1*mau_so2,mau_so1*tu_so2);
+        }
+    } while (mau_so1 == 0 || mau_so2 == 0);
+    
 }
 
 void lua_chon(){
@@ -257,15 +412,18 @@ void lua_chon(){
             break;
         }
         case 8:{
-            printf("Ban da chon bai 8\n");
+            program_8();
+            printf("\n");
             break;
         }
         case 9:{
-            printf("Ban da chon bai 9\n");
+            program_9();
+            printf("\n");
             break;
         }
         case 10:{
-            printf("Ban da chon bai 10\n");
+            program_10();
+            printf("\n");
             break;
         }
         case 11:{
