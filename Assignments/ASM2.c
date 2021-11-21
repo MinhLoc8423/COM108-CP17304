@@ -107,7 +107,7 @@ void program_3(){
                 printf("So tien can thanh toan la:%g\n",tien);
             }
             else{
-                tien = tien + (so_du *(150000*tien_km));
+                tien = tien + (so_du *(150000*tien_km));    
                 printf("So tien can thanh toan la:%g\n",tien);
             }
         }
@@ -176,6 +176,42 @@ void program_5(){
     }
 }
 
+void program_6(){
+    int so_tien_vay,lai;
+    printf("\nChuong trinh so 6: Chuc nang tinh lai xuat cho vay tra gop\n");
+    printf("Nhap so tien muon vay:");
+    scanf("%d",&so_tien_vay);
+    int bien_tam = so_tien_vay;
+    printf("%s| %-15s | %-15s | %-15s | %-15s\n","Ky han","Lai phai tra","Goc phai tra","So tien phai tra","So tien con lai");
+    for(int i = 1;i<=12;i++){
+        lai = so_tien_vay * 0.05;
+        so_tien_vay = so_tien_vay - (bien_tam/12);
+        printf("  %-3d | %-15d | %-15d | %-16d | %-15d\n",i,lai,(bien_tam/12),(bien_tam/12)+lai,so_tien_vay);
+    }
+}
+
+void program_7(){
+    float pham_tram_vay,lai,tien_no;
+    int tien_co_dinh = 500000000;
+    printf("\nChuong trinh so 7: Chuc nang vay tien mua xe\n");
+    printf("Nhap so phan tram vay toi da(0-100):");
+    scanf("%f",&pham_tram_vay);
+    printf("So tien tra lan dau:%.0f\n",tien_co_dinh* ((100-pham_tram_vay) /100));
+    tien_no = tien_co_dinh - (tien_co_dinh * ((100-pham_tram_vay) /100));
+    float bien_tam = tien_no;
+    printf("%s| %-15s | %-15s | %-15s | %-15s\n","Ky han","Lai phai tra","Goc phai tra","So tien phai tra","So tien con lai");
+    int j = 0;
+    for(int i = 1; i <= 288;i++){
+        lai = tien_no * 0.006;
+        tien_no = tien_no - (bien_tam/288);
+        printf("  %-3d | %-15.2f | %-15.2f | %-16.2f | %-15.2f\n",i,lai,(bien_tam/288),(bien_tam/12)+lai,tien_no);
+        if(i%12 == 0){
+            j++;
+            printf("---------------------------->Ket thuc nam thu %d<----------------------------\n",j);
+        }
+    }
+}
+
 void lua_chon(){
     int choose;
     do
@@ -211,11 +247,13 @@ void lua_chon(){
             break;
         }
         case 6:{
-            printf("Ban da chon bai 6\n");
+            program_6();
+            printf("\n");
             break;
         }
         case 7:{
-            printf("Ban da chon bai 7\n");
+            program_7();
+            printf("\n");
             break;
         }
         case 8:{
