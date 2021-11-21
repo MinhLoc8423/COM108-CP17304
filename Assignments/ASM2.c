@@ -96,21 +96,23 @@ void program_3(){
         printf("Loi gio nhap !!!\n");
     }
     else{
-        tien = tong_gio * 150000;
         if (tong_gio > 3)
         {
+            int so_du = tong_gio - 3;
             float tien_km = 0.7;
+            tien = 3 * 150000;
             if( 14 <= gio_batdau && gio_batdau <= 17){
                 tien_km = 0.6;
-                tien = tien + (((tong_gio - 3) * 150000)*tien_km);
+                tien = tien + (so_du *(150000*tien_km));
                 printf("So tien can thanh toan la:%g\n",tien);
             }
             else{
-                tien = tien + (((tong_gio - 3) * 150000)*tien_km);
+                tien = tien + (so_du *(150000*tien_km));
                 printf("So tien can thanh toan la:%g\n",tien);
             }
         }
         else{
+            tien = tong_gio * 150000;
             printf("So tien can thanh toan la:%g\n",tien);
         }
     }
